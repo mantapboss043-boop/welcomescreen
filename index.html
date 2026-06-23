@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dafam Hotel Pekalongan</title>
+<title>Hotel Dafam Pekalongan</title>
 
 <style>
 *{
@@ -38,9 +38,15 @@ body{
     font-size:40px;
     color:#d4af37;
     font-weight:bold;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
-
+.logo img{
+    width:clamp(120px, 15vw, 260px);
+    height:auto;
+    display:block;
+    object-fit:contain;
+    filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
+}
 .hotel{
     font-size:20px;
     letter-spacing:3px;
@@ -185,8 +191,12 @@ body{
 
 <div class="left">
 
-    <div class="logo">H</div>
-    <div class="hotel">DAFAM HOTEL PEKALONGAN</div>
+    <div class="logo">
+    <img src="https://res.cloudinary.com/dvryknjyh/image/upload/v1780387378/logo_p3kevr.png"
+         alt="Logo Hotel Dafam Pekalongan">
+</div>
+
+<div class="hotel">HOTEL DAFAM PEKALONGAN</div>
 
     <div class="welcome-title">Welcome</div>
 
