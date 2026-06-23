@@ -207,6 +207,44 @@ body{
     margin:20px 0;
     box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
+
+    .weather-panel{
+    position:absolute;
+    top:120px;
+    right:60px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+    padding:15px 25px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.weather-icon{
+    font-size:48px;
+}
+
+.weather-title{
+    font-size:14px;
+    opacity:.8;
+}
+
+.weather-desc{
+    font-size:24px;
+    font-weight:600;
+}
+
+.weather-temp{
+    font-size:18px;
+    color:#d4af37;
+}
+
+.weather-city{
+    font-size:14px;
+    opacity:.7;
+}
 </style>
 </head>
 
@@ -220,7 +258,17 @@ body{
     <div class="time" id="clock">10:30</div>
     <div class="date" id="tanggal">Senin, 20 Mei 2024</div>
 </div>
-
+    
+<div class="weather-panel">
+    <div class="weather-icon">☁️</div>
+    <div class="weather-info">
+        <div class="weather-title">Cuaca Hari Ini</div>
+        <div class="weather-desc">Berawan</div>
+        <div class="weather-temp">24°C - 33°C</div>
+        <div class="weather-city">Kota Pekalongan</div>
+    </div>
+</div>
+    
 <div class="left">
 
    <div class="hotel-brand">
