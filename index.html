@@ -225,34 +225,5 @@ body{
 </section>
 
 
-
-<script>
-
-function updateClock(){
-
-    let now = new Date();
-
-    let jam = now.toLocaleTimeString('id-ID',{
-        hour:'2-digit',
-        minute:'2-digit'
-    });
-
-    let tanggal = now.toLocaleDateString('id-ID',{
-        weekday:'long',
-        day:'numeric',
-        month:'long',
-        year:'numeric'
-    });
-
-    document.getElementById("clock").innerHTML = jam;
-    document.getElementById("clock2").innerHTML = jam;
-    document.getElementById("tanggal").innerHTML = tanggal;
-}
-
-setInterval(updateClock,1000);
-updateClock();
-
-</script>
-
 </body>
 </html>
