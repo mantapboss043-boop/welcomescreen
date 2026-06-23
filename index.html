@@ -245,6 +245,68 @@ body{
     font-size:14px;
     opacity:.7;
 }
+
+    .top-right{
+    position:absolute;
+    top:35px;
+    right:50px;
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+    z-index:10;
+}
+
+.time-panel{
+    text-align:right;
+}
+
+.time{
+    font-size:clamp(32px,2.5vw,48px);
+    font-weight:600;
+    line-height:1;
+}
+
+.date{
+    font-size:clamp(14px,1vw,18px);
+    opacity:.85;
+    margin-top:5px;
+}
+
+.weather-panel{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(10px);
+
+    padding:10px 16px;
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.weather-icon{
+    font-size:clamp(24px,2vw,32px);
+}
+
+.weather-desc{
+    font-size:clamp(14px,1vw,18px);
+    font-weight:600;
+    line-height:1.2;
+}
+
+.weather-temp{
+    font-size:clamp(12px,.9vw,15px);
+    color:#d4af37;
+}
+
+.weather-city,
+.weather-title{
+    display:none;
+}
 </style>
 </head>
 
@@ -254,19 +316,22 @@ body{
 
 <section id="welcome">
 
-<div class="time-panel">
-    <div class="time" id="clock">10:30</div>
-    <div class="date" id="tanggal">Senin, 20 Mei 2024</div>
-</div>
-    
-<div class="weather-panel">
-    <div class="weather-icon">☁️</div>
-    <div class="weather-info">
-        <div class="weather-title">Cuaca Hari Ini</div>
-        <div class="weather-desc">Berawan</div>
-        <div class="weather-temp">24°C - 33°C</div>
-        <div class="weather-city">Kota Pekalongan</div>
+<div class="top-right">
+
+    <div class="time-panel">
+        <div class="time" id="clock">10:30</div>
+        <div class="date" id="tanggal">Senin, 20 Mei 2024</div>
     </div>
+
+    <div class="weather-panel">
+        <div class="weather-icon">☁️</div>
+
+        <div class="weather-info">
+            <div class="weather-desc">Berawan</div>
+            <div class="weather-temp">24°-33°C</div>
+        </div>
+    </div>
+
 </div>
     
 <div class="left">
