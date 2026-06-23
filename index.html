@@ -20,14 +20,36 @@ body{
 
 /* WELCOME SCREEN */
 #welcome{
-    height:100vh;
     position:relative;
+    height:100vh;
     overflow:hidden;
     display:flex;
     align-items:center;
-    justify-content:space-between;
     padding:60px;
+}
+
+.bg-slide{
+    position:absolute;
+    inset:0;
+    z-index:0;
+
+    background-size:cover;
+    background-position:center;
+
+    transition:background-image 1.5s ease-in-out;
+}
+
+.bg-overlay{
+    position:absolute;
+    inset:0;
     z-index:1;
+
+    background:
+    linear-gradient(
+        to right,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.35)
+    );
 }
 
 #welcome::before{
@@ -44,7 +66,9 @@ body{
 }
 
 .left{
-    max-width:600px;
+    position:relative;
+    z-index:2;
+    max-width:700px;
 }
 
 .logo{
@@ -320,10 +344,18 @@ body{
 .weather-title{
     display:none;
 }
-    .left,
+   
+}
+
 .top-right{
-    position:relative;
-    z-index:2;
+    position:absolute;
+    top:35px;
+    right:50px;
+    z-index:10;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 </style>
 </head>
@@ -333,6 +365,9 @@ body{
 <!-- WELCOME SCREEN -->
 
 <section id="welcome">
+
+    <div class="bg-slide" id="bgSlide"></div>
+    <div class="bg-overlay"></div>
 
 <div class="top-right">
 
@@ -426,46 +461,32 @@ setInterval(updateClock,1000);
 updateClock();
 
 const backgrounds = [
-
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/Lobby_5_huw5gf.jpg',
-
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/Royal_Suite_Room_ozwub7.jpg',
-
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/ChatGPT_Image_May_25_2026_10_18_38_PM_f4udza.png',
-
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/ChatGPT_Image_May_25_2026_10_09_08_PM_dnlsas.png',
-
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/Welness_Center_gafsce.jpg'
-
 ];
+
+const bgSlide = document.getElementById("bgSlide");
 
 let currentBg = 0;
 
-setInterval(() => {
+function changeBackground(){
+
+    bgSlide.style.backgroundImage =
+        `url('${backgrounds[currentBg]}')`;
 
     currentBg++;
 
     if(currentBg >= backgrounds.length){
         currentBg = 0;
     }
+}
 
-    document.querySelector('#welcome').style.backgroundImage =
-        `linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.3)),
-         url('${backgrounds[currentBg]}')`;
+changeBackground();
 
-}, 8000);
-
-const welcome = document.getElementById("welcome");
-
-setInterval(() => {
-
-    currentBg = (currentBg + 1) % backgrounds.length;
-
-    welcome.style.background =
-        `linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.3)),
-         url('${backgrounds[currentBg]}') center/cover`;
-
-}, 8000);
+setInterval(changeBackground,8000);
         
 </script>
 
