@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Welcome Screen</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#111;
+    color:#fff;
+}
+
+/* WELCOME SCREEN */
+#welcome{
+    height:100vh;
+    background:
+    linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.3)),
+    url('https://images.unsplash.com/photo-1566073771259-6a8506099945') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:60px;
+}
+
+.left{
+    max-width:600px;
+}
+
+.logo{
+    font-size:40px;
+    color:#d4af37;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hotel{
+    font-size:20px;
+    letter-spacing:3px;
+    color:#d4af37;
+    margin-bottom:40px;
+}
+
+.welcome-title{
+    font-size:90px;
+    font-family:Georgia,serif;
+}
+
+.guest{
+    font-size:45px;
+    font-style:italic;
+    margin:15px 0;
+}
+
+.desc{
+    font-size:24px;
+    line-height:1.6;
+    opacity:.9;
+    margin-top:20px;
+}
+
+.info{
+    display:flex;
+    gap:50px;
+    margin-top:50px;
+}
+
+.info-box{
+    border-left:3px solid #d4af37;
+    padding-left:15px;
+}
+
+.info-box h4{
+    color:#d4af37;
+    margin-bottom:8px;
+}
+
+.time-panel{
+    position:absolute;
+    top:40px;
+    right:60px;
+    text-align:right;
+}
+
+.time{
+    font-size:42px;
+}
+
+.date{
+    font-size:20px;
+    opacity:.8;
+}
+
+.bottom-msg{
+    position:absolute;
+    bottom:40px;
+    left:60px;
+    font-size:24px;
+    color:#d4af37;
+}
+
+/* MENU SCREEN */
+
+#menu{
+    min-height:100vh;
+    background:linear-gradient(135deg,#111,#222);
+    padding:40px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.header h2{
+    color:#d4af37;
+    font-size:38px;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:scale(1.03);
+    border-color:#d4af37;
+}
+
+.icon{
+    font-size:70px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    color:#d4af37;
+    margin-bottom:15px;
+    font-size:28px;
+}
+
+.card p{
+    font-size:18px;
+    opacity:.8;
+}
+
+.footer{
+    margin-top:40px;
+    text-align:center;
+    font-size:20px;
+    color:#d4af37;
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME SCREEN -->
+
+<section id="welcome">
+
+<div class="time-panel">
+    <div class="time" id="clock">10:30</div>
+    <div class="date" id="tanggal">Senin, 20 Mei 2024</div>
+</div>
+
+<div class="left">
+
+    <div class="logo">H</div>
+    <div class="hotel">GRAND HARMONY HOTEL</div>
+
+    <div class="welcome-title">Welcome</div>
+
+    <div class="guest">Mr. Andi Pratama</div>
+
+    <div class="desc">
+        Selamat datang di Grand Harmony Hotel.<br>
+        Semoga Anda menikmati pengalaman menginap yang menyenangkan bersama kami.
+    </div>
+
+    <div class="info">
+
+        <div class="info-box">
+            <h4>Room Number</h4>
+            <div>1208</div>
+        </div>
+
+        <div class="info-box">
+            <h4>Check-In</h4>
+            <div>20 Mei 2026</div>
+        </div>
+
+        <div class="info-box">
+            <h4>Check-Out</h4>
+            <div>22 Mei 2026</div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="bottom-msg">
+    Tekan OK untuk membuka Menu Hotel
+</div>
+
+</section>
+
+<!-- MENU -->
+
+<section id="menu">
+
+<div class="header">
+    <h2>Selamat Datang, Mr. Andi Pratama</h2>
+    <div id="clock2"></div>
+</div>
+
+<div class="menu-grid">
+
+    <div class="card">
+        <div class="icon">📺</div>
+        <h3>TV Channel</h3>
+        <p>Tonton saluran favorit Anda</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🍽️</div>
+        <h3>Room Service</h3>
+        <p>Pesan makanan dan minuman</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">ℹ️</div>
+        <h3>Hotel Info</h3>
+        <p>Informasi fasilitas hotel</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🎉</div>
+        <h3>Promo</h3>
+        <p>Promo dan event terbaru</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">📍</div>
+        <h3>Wisata</h3>
+        <p>Destinasi sekitar hotel</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>Pengaturan</h3>
+        <p>Bahasa dan tampilan</p>
+    </div>
+
+</div>
+
+<div class="footer">
+    Gunakan tombol arah pada remote untuk navigasi
+</div>
+
+</section>
+
+<script>
+
+function updateClock(){
+
+    let now = new Date();
+
+    let jam = now.toLocaleTimeString('id-ID',{
+        hour:'2-digit',
+        minute:'2-digit'
+    });
+
+    let tanggal = now.toLocaleDateString('id-ID',{
+        weekday:'long',
+        day:'numeric',
+        month:'long',
+        year:'numeric'
+    });
+
+    document.getElementById("clock").innerHTML = jam;
+    document.getElementById("clock2").innerHTML = jam;
+    document.getElementById("tanggal").innerHTML = tanggal;
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+</script>
+
+</body>
+</html>
