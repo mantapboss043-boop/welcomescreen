@@ -553,6 +553,19 @@ function changeBackground(){
 changeBackground();
 
 setInterval(changeBackground,8000);
+
+setInterval(() => {
+
+    fetch("guest.json")
+    .then(res => res.json())
+    .then(data => {
+
+        document.querySelector(".guest").textContent =
+            data.guestName;
+
+    });
+
+}, 30000);
         
 </script>
 
