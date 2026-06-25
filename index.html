@@ -92,8 +92,11 @@ body{
 }
 
 .welcome-title{
-    font-size:90px;
+    font-size:clamp(30px,4.5vw,30px);
     font-family:Georgia,serif;
+    color:#ffffff;
+    text-shadow:0 4px 15px rgba(0,0,0,.4);
+    margin-bottom:8px;
 }
 
 .guest{
@@ -345,7 +348,6 @@ body{
     display:none;
 }
    
-}
 
 .top-right{
     position:absolute;
@@ -402,7 +404,7 @@ body{
  </div>
 
 
-    <div class="welcome-title">Welcome</div>
+    <div class="welcome-title">Welcome :</div>
 
     <div class="guest">Mr. Totok</div>
 
@@ -462,8 +464,8 @@ updateClock();
 
 const backgrounds = [
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/Lobby_5_huw5gf.jpg',
+'https://res.cloudinary.com/dvryknjyh/image/upload/v1782354986/4_HD_dpsmen.png',
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/Royal_Suite_Room_ozwub7.jpg',
-'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/ChatGPT_Image_May_25_2026_10_18_38_PM_f4udza.png',
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/ChatGPT_Image_May_25_2026_10_09_08_PM_dnlsas.png',
 'https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/Welness_Center_gafsce.jpg'
 ];
