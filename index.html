@@ -31,7 +31,7 @@ body{
 .bg-slide{
     position:absolute;
     inset:0;
-    z-index:0;
+    z-index:-2;
 
     background-size:cover;
     background-position:center;
@@ -42,7 +42,7 @@ body{
 .bg-overlay{
     position:absolute;
     inset:0;
-    z-index:1;
+    z-index:-1;
 
     background:
     linear-gradient(
@@ -52,23 +52,11 @@ body{
     );
 }
 
-#welcome::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.3)),
-    url('https://res.cloudinary.com/dvryknjyh/image/upload/v1779723173/Lobby_5_huw5gf.jpg');
-    background-size:cover;
-    background-position:center;
-    transition:background-image 1.5s ease-in-out;
-    z-index:-1;
-}
 
 .left{
     position:relative;
-    z-index:2;
-    max-width:700px;
+    z-index:5;
+   
 }
 
 .logo{
@@ -84,15 +72,10 @@ body{
     object-fit:contain;
     filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
 }
-.hotel{
-    font-size:20px;
-    letter-spacing:3px;
-    color:#d4af37;
-    margin-bottom:40px;
-}
+
 
 .welcome-title{
-    font-size:clamp(30px,4.5vw,30px);
+    font-size:clamp(48px,4.5vw,72px);
     font-family:Georgia,serif;
     color:#ffffff;
     text-shadow:0 4px 15px rgba(0,0,0,.4);
@@ -128,12 +111,7 @@ body{
     margin-bottom:8px;
 }
 
-.time-panel{
-    position:absolute;
-    top:40px;
-    right:60px;
-    text-align:right;
-}
+
 
 .time{
     font-size:42px;
@@ -216,12 +194,6 @@ body{
     color:#d4af37;
 }
 
-    .hotel-brand{
-    display:flex;
-    align-items:center;
-    gap:25px;
-    margin-bottom:40px;
-}
 
 .logo img{
     width:clamp(140px,18vw,300px);
@@ -248,19 +220,7 @@ body{
     box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
-    .weather-panel{
-    position:absolute;
-    top:120px;
-    right:60px;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(10px);
-    padding:15px 25px;
-    border-radius:18px;
-    border:1px solid rgba(255,255,255,0.2);
-}
+   
 
 .weather-icon{
     font-size:48px;
@@ -286,48 +246,38 @@ body{
     opacity:.7;
 }
 
-    .top-right{
-    position:absolute;
-    top:35px;
-    right:50px;
-
+ .top-right{
     display:flex;
     align-items:center;
-    gap:25px;
+    gap:12px;
+}   
 
-    z-index:10;
-}
 
-.time-panel{
-    text-align:right;
-}
 
 .time{
-    font-size:clamp(32px,2.5vw,48px);
+    font-size:28px;
     font-weight:600;
-    line-height:1;
 }
 
 .date{
-    font-size:clamp(14px,1vw,18px);
-    opacity:.85;
-    margin-top:5px;
+    font-size:12px;
+    opacity:.8;
 }
+
+
 
 .weather-panel{
     display:flex;
     align-items:center;
     gap:10px;
-
     background:rgba(0,0,0,.25);
     backdrop-filter:blur(10px);
-
     padding:10px 16px;
     border-radius:14px;
-
     border:1px solid rgba(255,255,255,.15);
+    padding:8px 12px;
+    border-radius:12px;
 }
-
 .weather-icon{
     font-size:clamp(24px,2vw,32px);
 }
@@ -349,15 +299,115 @@ body{
 }
    
 
-.top-right{
-    position:absolute;
-    top:35px;
-    right:50px;
-    z-index:10;
 
+.weather-icon{
+    font-size:22px;
+}
+
+.weather-desc{
+    font-size:14px;
+}
+
+.weather-temp{
+    font-size:12px;
+}
+
+.header-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    width:100%;
+    margin-bottom:70px;
+}
+
+.time-panel{
+    text-align:right;
+}
+
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.left{
+    position:relative;
+    z-index:5;
+    width:100%;
+    height:100%;
+}
+
+.header-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:80px;
+}
+
+.hotel-brand{
     display:flex;
     align-items:center;
     gap:20px;
+}
+
+.hotel-name{
+    font-size:34px;
+    font-weight:600;
+    letter-spacing:4px;
+    color:#d4af37;
+}
+
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.content-area{
+    max-width:800px;
+}
+
+.logo img{
+    width:180px;
+}
+
+.time{
+    font-size:30px;
+    font-weight:700;
+}
+
+.date{
+    font-size:13px;
+}
+
+.weather-panel{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+
+    padding:10px 14px;
+    border-radius:12px;
+}
+
+.welcome-title{
+    font-size:52px;
+    font-family:Georgia,serif;
+    margin-bottom:10px;
+}
+
+.guest{
+    font-size:42px;
+    margin-bottom:25px;
+}
+
+.desc{
+    font-size:22px;
+    line-height:1.7;
+    max-width:700px;
 }
 </style>
 </head>
@@ -371,68 +421,82 @@ body{
     <div class="bg-slide" id="bgSlide"></div>
     <div class="bg-overlay"></div>
 
-<div class="top-right">
 
-    <div class="time-panel">
-        <div class="time" id="clock">10:30</div>
-        <div class="date" id="tanggal">Senin, 20 Mei 2024</div>
-    </div>
-
-    <div class="weather-panel">
-        <div class="weather-icon">☁️</div>
-
-        <div class="weather-info">
-            <div class="weather-desc">Berawan</div>
-            <div class="weather-temp">24°-33°C</div>
-        </div>
-    </div>
-
-</div>
     
 <div class="left">
 
-   <div class="hotel-brand">
+    <div class="header-top">
 
-    <div class="logo">
-        <img src="https://res.cloudinary.com/dvryknjyh/image/upload/v1780387378/logo_p3kevr.png"
-             alt="Logo Hotel Dafam Pekalongan">
-    </div>
+        <div class="hotel-brand">
 
-    <div class="hotel">
-        HOTEL PEKALONGAN
-    </div>
- </div>
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dvryknjyh/image/upload/v1780387378/logo_p3kevr.png">
+            </div>
 
+            <div class="hotel-name">
+                HOTEL PEKALONGAN
+            </div>
 
-    <div class="welcome-title">Welcome :</div>
-
-    <div class="guest">Mr. Totok</div>
-
-    <div class="desc">
-        Selamat datang di Dafam Hotel.<br>
-        Semoga Anda menikmati pengalaman menginap yang menyenangkan bersama kami.
-    </div>
-
-    <div class="info">
-
-        <div class="info-box">
-            <h4>Room Number</h4>
-            <div>1208</div>
         </div>
 
-        <div class="info-box">
-            <h4>Check-In</h4>
-            <div>20 Mei 2026</div>
+        <div class="top-right">
+
+            <div class="time-panel">
+                <div class="time" id="clock"></div>
+                <div class="date" id="tanggal"></div>
+            </div>
+
+            <div class="weather-panel">
+                <div class="weather-icon">☁️</div>
+
+                <div>
+                    <div class="weather-desc">Berawan</div>
+                    <div class="weather-temp">24° - 33°C</div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="info-box">
-            <h4>Check-Out</h4>
-            <div>22 Mei 2026</div>
+    </div>
+
+    <div class="content-area">
+
+        <div class="welcome-title">
+            Welcome
+        </div>
+
+        <div class="guest">
+            Mr. Totok
+        </div>
+
+        <div class="desc">
+            Selamat datang di Hotel Dafam Pekalongan.<br>
+            Semoga Anda menikmati pengalaman menginap yang menyenangkan bersama kami.
+        </div>
+
+        <div class="info">
+
+            <div class="info-box">
+                <h4>Room Number</h4>
+                <div>1208</div>
+            </div>
+
+            <div class="info-box">
+                <h4>Check-In</h4>
+                <div>20 Mei 2026</div>
+            </div>
+
+            <div class="info-box">
+                <h4>Check-Out</h4>
+                <div>22 Mei 2026</div>
+            </div>
+
         </div>
 
     </div>
 
 </div>
+
 
 
 </section>
