@@ -16,18 +16,47 @@ body{
 
 #welcome{
     position:relative;
+    width:100vw;
     height:100vh;
 }
 
 .bg-slide{
     position:absolute;
-    inset:0;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
     background-size:cover;
     background-position:center;
-    z-index:-2;
-     transition:
-        background-image 2s ease,
-        opacity 2s ease;
+    background-repeat:no-repeat;
+
+    opacity:1;
+    z-index:0;
+
+    transition:all 1s;
+}
+
+.bg-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:
+      linear-gradient(
+         to right,
+         rgba(0,0,0,.85),
+         rgba(0,0,0,.3)
+      );
+
+    z-index:1;
+}
+
+.container{
+    position:relative;
+    z-index:2;
 }
 
 .bg-overlay{
@@ -566,6 +595,27 @@ document.addEventListener(
 function(){
 
     resetIdle();
+
+});
+
+function changeBackground(){
+
+    console.log("change bg");
+
+    bgSlide.style.backgroundImage=
+      `url(${backgrounds[currentBg]})`;
+
+    currentBg++;
+
+    if(currentBg>=backgrounds.length)
+       currentBg=0;
+}
+
+document.addEventListener(
+'keydown',
+function(e){
+
+    alert(e.keyCode);
 
 });
         
