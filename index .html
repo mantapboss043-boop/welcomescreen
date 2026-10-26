@@ -1,311 +1,585 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hotel Welcome Screen</title>
+<meta name="theme-color" content="#07101d">
+<title>Hotel Dafam Pekalongan | Digital Signage</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+:root {
+  --gold: #e8c77a;
+  --gold-light: #fff0bd;
+  --bg: #07101d;
+  --panel: #101c2c;
+  --white: #ffffff;
+  --muted: #c4ccda;
 }
 
-body{
-    background:#111;
-    color:#fff;
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--white);
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* WELCOME SCREEN */
-#welcome{
-    height:100vh;
-    background:
-    linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.3)),
-    url('https://images.unsplash.com/photo-1566073771259-6a8506099945') center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:60px;
+body {
+  min-height: 100dvh;
 }
 
-.left{
-    max-width:600px;
+/* Tata letak khusus TV portrait */
+.screen {
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 9% 71% 20%;
+  background:
+    radial-gradient(ellipse at top, #203148 0%, #07101d 55%);
+  overflow: hidden;
 }
 
-.logo{
-    font-size:40px;
-    color:#d4af37;
-    font-weight:bold;
-    margin-bottom:20px;
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 0 5%;
+  border-bottom: 1px solid rgba(232,199,122,.32);
+  min-width: 0;
 }
 
-.hotel{
-    font-size:20px;
-    letter-spacing:3px;
-    color:#d4af37;
-    margin-bottom:40px;
+.brand {
+  min-width: 0;
 }
 
-.welcome-title{
-    font-size:90px;
-    font-family:Georgia,serif;
+.brand-name {
+  color: var(--gold);
+  font-size: clamp(15px, 3.8vw, 28px);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
 }
 
-.guest{
-    font-size:45px;
-    font-style:italic;
-    margin:15px 0;
+.brand-sub {
+  color: #d9dfeb;
+  font-size: clamp(9px, 1.8vw, 14px);
+  letter-spacing: 2px;
+  margin-top: 4px;
 }
 
-.desc{
-    font-size:24px;
-    line-height:1.6;
-    opacity:.9;
-    margin-top:20px;
+.clock-box {
+  text-align: right;
+  flex-shrink: 0;
 }
 
-.info{
-    display:flex;
-    gap:50px;
-    margin-top:50px;
+#clock {
+  font-size: clamp(16px, 3.5vw, 27px);
+  font-weight: 700;
+  color: var(--gold-light);
+  font-variant-numeric: tabular-nums;
 }
 
-.info-box{
-    border-left:3px solid #d4af37;
-    padding-left:15px;
+#today {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: clamp(9px, 1.7vw, 13px);
 }
 
-.info-box h4{
-    color:#d4af37;
-    margin-bottom:8px;
+/* AREA PROMO */
+.promo-area {
+  min-height: 0;
+  padding: 3% 4%;
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  overflow: hidden;
 }
 
-.time-panel{
-    position:absolute;
-    top:40px;
-    right:60px;
-    text-align:right;
+.promo-topline {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
-.time{
-    font-size:42px;
+.section-tag {
+  color: var(--gold);
+  font-size: clamp(9px, 2vw, 15px);
+  font-weight: 800;
+  letter-spacing: 2px;
 }
 
-.date{
-    font-size:20px;
-    opacity:.8;
+.slide-count {
+  color: var(--muted);
+  font-size: clamp(10px, 2vw, 14px);
 }
 
-.bottom-msg{
-    position:absolute;
-    bottom:40px;
-    left:60px;
-    font-size:24px;
-    color:#d4af37;
+.slide {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border: 1px solid rgba(232,199,122,.65);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #182538;
+  box-shadow: 0 12px 38px rgba(0,0,0,.3);
 }
 
-/* MENU SCREEN */
-
-#menu{
-    min-height:100vh;
-    background:linear-gradient(135deg,#111,#222);
-    padding:40px;
+.slide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .55s ease;
 }
 
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:40px;
+.slide img.fade-out {
+  opacity: .08;
 }
 
-.header h2{
-    color:#d4af37;
-    font-size:38px;
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,8,17,.03) 30%,
+      rgba(2,8,17,.35) 52%,
+      rgba(2,8,17,.95) 100%
+    );
+  pointer-events: none;
 }
 
-.menu-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+.slide-overlay {
+  position: absolute;
+  z-index: 2;
+  left: 6%;
+  right: 6%;
+  bottom: 5%;
 }
 
-.card{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:20px;
-    padding:40px;
-    text-align:center;
-    transition:.3s;
-    cursor:pointer;
+.promo-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 5px;
+  color: #131b25;
+  background: var(--gold);
+  font-size: clamp(9px, 1.9vw, 14px);
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
 }
 
-.card:hover{
-    transform:scale(1.03);
-    border-color:#d4af37;
+#promoTitle {
+  font-size: clamp(28px, 7.2vw, 55px);
+  font-weight: 850;
+  line-height: 1.04;
+  margin: 0 0 12px;
+  text-shadow: 0 3px 16px rgba(0,0,0,.5);
 }
 
-.icon{
-    font-size:70px;
-    margin-bottom:20px;
+#promoDescription {
+  color: #edf0f5;
+  font-size: clamp(13px, 3vw, 21px);
+  line-height: 1.45;
+  margin: 0;
+  max-width: 95%;
 }
 
-.card h3{
-    color:#d4af37;
-    margin-bottom:15px;
-    font-size:28px;
+.gold-line {
+  width: 54px;
+  height: 4px;
+  border-radius: 10px;
+  background: var(--gold);
+  margin-top: 18px;
 }
 
-.card p{
-    font-size:18px;
-    opacity:.8;
+.dots {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 2px 0;
 }
 
-.footer{
-    margin-top:40px;
-    text-align:center;
-    font-size:20px;
-    color:#d4af37;
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 10px;
+  background: #4a5668;
+  transition: all .3s;
+}
+
+.dot.active {
+  width: 25px;
+  background: var(--gold);
+}
+
+/* PANEL EVENT — 20% LAYAR */
+.events {
+  min-height: 0;
+  overflow: hidden;
+  padding: 3% 5% 2%;
+  background:
+    linear-gradient(135deg, #172538, #0c1523 80%);
+  border-top: 2px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+}
+
+.events-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.events-heading {
+  font-size: clamp(13px, 3vw, 22px);
+  font-weight: 800;
+  color: var(--gold-light);
+}
+
+.live-label {
+  flex-shrink: 0;
+  color: #c8f6d7;
+  font-size: clamp(8px, 1.6vw, 12px);
+  letter-spacing: 1px;
+}
+
+.event-list {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.event-card {
+  min-width: 0;
+  min-height: 0;
+  padding: 10px 8px;
+  border-radius: 9px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.event-icon {
+  font-size: clamp(19px, 4.5vw, 32px);
+  margin-bottom: 5px;
+}
+
+.event-name {
+  font-size: clamp(10px, 2.2vw, 16px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+.event-time {
+  color: var(--gold);
+  font-size: clamp(9px, 1.8vw, 13px);
+  margin-bottom: 5px;
+}
+
+.event-status {
+  color: #c3ccda;
+  font-size: clamp(8px, 1.6vw, 12px);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.footer-note {
+  text-align: center;
+  flex: 0 0 auto;
+  padding-top: 9px;
+  color: #aeb9ca;
+  font-size: clamp(8px, 1.5vw, 11px);
+  letter-spacing: .5px;
+}
+
+/* Mode portrait dan layar yang sangat kecil */
+@media (max-height: 650px) {
+  .screen { grid-template-rows: 9% 71% 20%; }
+  .promo-area { padding-top: 1.5%; padding-bottom: 1.5%; }
+  .events { padding-top: 1.5%; }
+  .events-header { margin-bottom: 5px; }
+  .event-card { padding: 5px; }
+  .footer-note { padding-top: 4px; }
+}
+
+@media (orientation: landscape) {
+  .screen {
+    grid-template-rows: 12% 68% 20%;
+  }
+  .promo-area {
+    padding: 1.5% 3%;
+  }
+  #promoTitle { font-size: clamp(24px, 4vw, 48px); }
+  .event-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 </style>
 </head>
 
 <body>
+<div class="screen">
 
-<!-- WELCOME SCREEN -->
-
-<section id="welcome">
-
-<div class="time-panel">
-    <div class="time" id="clock">10:30</div>
-    <div class="date" id="tanggal">Senin, 20 Mei 2024</div>
-</div>
-
-<div class="left">
-
-    <div class="logo">H</div>
-    <div class="hotel">GRAND HARMONY HOTEL</div>
-
-    <div class="welcome-title">Welcome</div>
-
-    <div class="guest">Mr. Andi Pratama</div>
-
-    <div class="desc">
-        Selamat datang di Grand Harmony Hotel.<br>
-        Semoga Anda menikmati pengalaman menginap yang menyenangkan bersama kami.
+  <!-- HEADER HOTEL -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-name">DAFAM PEKALONGAN</div>
+      <div class="brand-sub">YOUR COMFORT, OUR PRIORITY</div>
     </div>
 
-    <div class="info">
+    <div class="clock-box">
+      <div id="clock">00:00:00</div>
+      <div id="today">Memuat tanggal...</div>
+    </div>
+  </header>
 
-        <div class="info-box">
-            <h4>Room Number</h4>
-            <div>1208</div>
-        </div>
-
-        <div class="info-box">
-            <h4>Check-In</h4>
-            <div>20 Mei 2026</div>
-        </div>
-
-        <div class="info-box">
-            <h4>Check-Out</h4>
-            <div>22 Mei 2026</div>
-        </div>
-
+  <!-- FOTO PROMOSI BERGANTIAN -->
+  <main class="promo-area">
+    <div class="promo-topline">
+      <div class="section-tag">DISCOVER OUR EXPERIENCE</div>
+      <div class="slide-count" id="slideCount">01 / 03</div>
     </div>
 
-</div>
+    <section class="slide">
+      <img id="promoImage" alt="Promosi fasilitas Hotel Dafam Pekalongan">
 
-<div class="bottom-msg">
-    Tekan OK untuk membuka Menu Hotel
-</div>
+      <div class="slide-overlay">
+        <div class="promo-badge" id="promoBadge">HOTEL HIGHLIGHTS</div>
+        <h1 id="promoTitle">Experience More</h1>
+        <p id="promoDescription">
+          Nikmati pengalaman menginap dan fasilitas terbaik bersama kami.
+        </p>
+        <div class="gold-line"></div>
+      </div>
+    </section>
 
-</section>
+    <div class="dots" id="dots"></div>
+  </main>
 
-<!-- MENU -->
-
-<section id="menu">
-
-<div class="header">
-    <h2>Selamat Datang, Mr. Andi Pratama</h2>
-    <div id="clock2"></div>
-</div>
-
-<div class="menu-grid">
-
-    <div class="card">
-        <div class="icon">📺</div>
-        <h3>TV Channel</h3>
-        <p>Tonton saluran favorit Anda</p>
+  <!-- INFORMASI EVENT: BAGIAN BAWAH 20% -->
+  <section class="events">
+    <div class="events-header">
+      <div class="events-heading">TODAY AT OUR HOTEL</div>
+      <div class="live-label">● HOTEL ACTIVITIES</div>
     </div>
 
-    <div class="card">
-        <div class="icon">🍽️</div>
-        <h3>Room Service</h3>
-        <p>Pesan makanan dan minuman</p>
-    </div>
+    <div class="event-list" id="eventList"></div>
 
-    <div class="card">
-        <div class="icon">ℹ️</div>
-        <h3>Hotel Info</h3>
-        <p>Informasi fasilitas hotel</p>
+    <div class="footer-note">
+      HOTEL DAFAM PEKALONGAN · WE LOOK FORWARD TO WELCOMING YOU
     </div>
-
-    <div class="card">
-        <div class="icon">🎉</div>
-        <h3>Promo</h3>
-        <p>Promo dan event terbaru</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">📍</div>
-        <h3>Wisata</h3>
-        <p>Destinasi sekitar hotel</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">⚙️</div>
-        <h3>Pengaturan</h3>
-        <p>Bahasa dan tampilan</p>
-    </div>
+  </section>
 
 </div>
-
-<div class="footer">
-    Gunakan tombol arah pada remote untuk navigasi
-</div>
-
-</section>
 
 <script>
+/*
+  KONFIGURASI DIGITAL SIGNAGE
+  1. Ganti judul dan deskripsi promosi di bawah.
+  2. Ubah intervalSlide untuk mengatur durasi pergantian.
+  3. Ubah data event sesuai agenda hotel hari ini.
+*/
 
-function updateClock(){
+const intervalSlide = 10000; // 10 detik per foto
 
-    let now = new Date();
+const promos = [
+  {
+    image: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-flyer-food-menu-design-template-b0bc6dfe9e5362f6c65f398a43440518_screen.jpg?ts=1654086199",
+    badge: "DINING EXPERIENCE",
+    title: "A Taste to Remember",
+    description: "Nikmati pilihan menu lezat dan pengalaman bersantap bersama kami."
+  },
+  {
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBOnamnIxlulZ3zg8C2oz_Ql-DkcNWpG5oJYJPHG3IOnQAjU2TEhVf6hEb&s=10",
+    badge: "RELAX & REFRESH",
+    title: "Enjoy Our Pool",
+    description: "Luangkan waktu untuk bersantai dan menikmati fasilitas kolam renang hotel."
+  },
+  {
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvmteXCaMZcV43yGjclfjkfZ9lAP_MBBTmM8EmaUoiu9vx7UCVehtL2xvJ&s=10",
+    badge: "MEETINGS & EVENTS",
+    title: "Make Every Event Special",
+    description: "Ballroom dan ruang meeting untuk rapat, pertemuan, dan acara istimewa."
+  }
+];
 
-    let jam = now.toLocaleTimeString('id-ID',{
-        hour:'2-digit',
-        minute:'2-digit'
-    });
+/*
+  CONTOH EVENT HARI INI
+  Ganti jam dan status sesuai jadwal aktual.
+  Ini hanya data simulasi, bukan agenda hotel yang terverifikasi.
+*/
+const events = [
+  {
+    icon: "✦",
+    name: "Ballroom",
+    time: "08.00–17.00 WIB",
+    status: "Acara & perayaan"
+  },
+  {
+    icon: "▦",
+    name: "Meeting Room",
+    time: "09.00–16.00 WIB",
+    status: "Rapat & bisnis"
+  },
+  {
+    icon: "≈",
+    name: "Swimming Pool",
+    time: "07.00–20.00 WIB",
+    status: "Fasilitas kolam renang"
+  }
+];
 
-    let tanggal = now.toLocaleDateString('id-ID',{
-        weekday:'long',
-        day:'numeric',
-        month:'long',
-        year:'numeric'
-    });
+let currentSlide = 0;
+let slideTimer = null;
 
-    document.getElementById("clock").innerHTML = jam;
-    document.getElementById("clock2").innerHTML = jam;
-    document.getElementById("tanggal").innerHTML = tanggal;
+const imageEl = document.getElementById("promoImage");
+const titleEl = document.getElementById("promoTitle");
+const descriptionEl = document.getElementById("promoDescription");
+const badgeEl = document.getElementById("promoBadge");
+const countEl = document.getElementById("slideCount");
+const dotsEl = document.getElementById("dots");
+
+/* Buat indikator slide */
+function createDots() {
+  dotsEl.innerHTML = "";
+
+  promos.forEach((promo, index) => {
+    const dot = document.createElement("div");
+    dot.className = "dot" + (index === currentSlide ? " active" : "");
+    dotsEl.appendChild(dot);
+  });
 }
 
-setInterval(updateClock,1000);
-updateClock();
+/* Tampilkan slide promosi */
+function showSlide(index) {
+  currentSlide = (index + promos.length) % promos.length;
+  const promo = promos[currentSlide];
 
+  imageEl.classList.add("fade-out");
+
+  const nextImage = new Image();
+
+  nextImage.onload = function() {
+    imageEl.src = promo.image;
+    imageEl.classList.remove("fade-out");
+  };
+
+  nextImage.onerror = function() {
+    // Tetap tampilkan gambar yang tersedia bila URL gagal dimuat.
+    imageEl.src = promo.image;
+    imageEl.classList.remove("fade-out");
+  };
+
+  nextImage.src = promo.image;
+
+  badgeEl.textContent = promo.badge;
+  titleEl.textContent = promo.title;
+  descriptionEl.textContent = promo.description;
+  countEl.textContent =
+    String(currentSlide + 1).padStart(2, "0") +
+    " / " +
+    String(promos.length).padStart(2, "0");
+
+  createDots();
+}
+
+/* Jam dan tanggal Indonesia */
+function updateClock() {
+  const now = new Date();
+
+  document.getElementById("clock").textContent =
+    new Intl.DateTimeFormat("id-ID", {
+      timeZone: "Asia/Jakarta",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    }).format(now);
+
+  document.getElementById("today").textContent =
+    new Intl.DateTimeFormat("id-ID", {
+      timeZone: "Asia/Jakarta",
+      weekday: "long",
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }).format(now);
+}
+
+/* Buat kartu event */
+function renderEvents() {
+  const list = document.getElementById("eventList");
+  list.innerHTML = "";
+
+  events.forEach(event => {
+    const card = document.createElement("article");
+    card.className = "event-card";
+
+    const icon = document.createElement("div");
+    icon.className = "event-icon";
+    icon.textContent = event.icon;
+
+    const name = document.createElement("div");
+    name.className = "event-name";
+    name.textContent = event.name;
+
+    const time = document.createElement("div");
+    time.className = "event-time";
+    time.textContent = event.time;
+
+    const status = document.createElement("div");
+    status.className = "event-status";
+    status.textContent = event.status;
+
+    card.append(icon, name, time, status);
+    list.appendChild(card);
+  });
+}
+
+/* Mulai otomatis */
+function startSignage() {
+  showSlide(0);
+  renderEvents();
+  updateClock();
+
+  setInterval(updateClock, 1000);
+
+  if (slideTimer) clearInterval(slideTimer);
+
+  slideTimer = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, intervalSlide);
+}
+
+/* Jika TV kembali dari kondisi standby */
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    updateClock();
+  }
+});
+
+startSignage();
 </script>
-
 </body>
 </html>
